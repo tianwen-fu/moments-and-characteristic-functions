@@ -7,9 +7,12 @@
 \usepackage{theorem}
 \usepackage[a4paper, margin=1.5in]{geometry}
 \usepackage{amssymb}
+\usepackage{enumerate}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
 
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
@@ -78,7 +81,26 @@ From this we also have that $|e^{i\theta}| = 1$ for any $\theta$.
 	Let $X$ be a random variable and denote by $F$ the cumulative distribution function of $X$. The characteristic function $\varphi=\varphi_X$ of $X$ (or of $F$, in which case we also write $\varphi_F$) is defined by \textnormal{\cite{cfms}}
 	$$\varphi_X(t):=E[e^{itX}]=\int_{-\infty}^\infty e^{itx}dF(x), t\in\reals$$
 \end{definition}
-\subsubsection{Basic Properties}
+\subsubsection{Basic Properties \cite{cfms}}
+\begin{theorem}
+If $X$ and $Y$ are independent random variables then the characteristic function of their sum is $$\varphi_{X+Y}(t) = \varphi_{X}\cdot\varphi_{Y}.$$
+\end{theorem}
+\begin{corollary}
+The product of two characteristic functions is a characteristic function.
+\end{corollary}
+\textbf{Remark} If $X$ and $Y$ are random variables such that $\varphi_{X+Y} = \varphi_X\cdot\varphi_Y $, then in general we do not conclude $X$ and $Y$ are independent. (See page 13 in \cite{cfms})
+\begin{theorem}
+For any $a,b \in \reals$, $$\varphi_{aX+b}(t)=e^{ibt}\varphi_X(at).$$
+\end{theorem}
+\begin{theorem}
+Every characteristic function $\varphi$ has the following properties:
+\begin{enumerate}[(i)]
+	\item $f(0)=1,$
+	\item $|f(t)<1,$
+	\item $f(-t)=\overline{f(t)}$
+	\item $f$ is continuous on $\reals$
+\end{enumerate}
+\end{theorem}
 \subsection{Common Distributions and Their Characteristic Functions}
 %also include some figures here
 \section{Examples and Applications of Characteristic Functions}
