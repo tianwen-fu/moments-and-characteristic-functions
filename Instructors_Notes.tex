@@ -102,6 +102,24 @@ Every characteristic function $\varphi$ has the following properties:
 \end{enumerate}
 \end{theorem}
 \subsection{Common Distributions and Their Characteristic Functions}
+\begin{table}[ht]
+	\caption{Characteristic Functions for Common Distributions\cite{kurser}}
+	\centering
+	\begin{tabular}{l l l}
+		\hline\hline
+		Distribution  & PMF/PDF & Characteristic Function\\
+		\hline
+		Constant $X\equiv a$  & - &  $\phi_X(t) = e^{iat}.$\\
+		Binomial $X\sim Binomial(m,p)$ & $p_X(n) = \binom{n}{m} p^n(1-p)^{m-n}$ &
+		$\phi_X(t) = (pe^{it} + (1-p))^m$\\
+		Poisson $X\sim Poisson(\lambda)$ & $p_X(n) = \frac{\lambda ^n}{n!} e^{-\lambda}$ &
+		$ \phi_X(t)=e^{\lambda(e^{it}-1)} $\\
+		Normal $X\sim N(0,1)$ & $f_X(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$ &
+		$\phi_X(t)=e^{-\frac{t^2}{2}}$\\
+		Normal $Y\sim N(\mu,\sigma ^2)$ & $f_Y(y) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y-\mu)^2}{2\sigma ^2}}$ & $\phi_Y(t)=e^{it\mu-\frac{\sigma^2 t^2}{2}}$
+	\end{tabular}
+	\label{tbl:charFunc}
+\end{table}
 %also include some figures here
 \section{Examples and Applications of Characteristic Functions}
 To be continued...
