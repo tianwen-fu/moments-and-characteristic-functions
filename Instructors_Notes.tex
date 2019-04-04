@@ -81,7 +81,14 @@ From this we also have that $|e^{i\theta}| = 1$ for any $\theta$.
 	Let $X$ be a random variable and denote by $F$ the cumulative distribution function of $X$. The characteristic function $\varphi=\varphi_X$ of $X$ (or of $F$, in which case we also write $\varphi_F$) is defined by \textnormal{\cite{cfms}}
 	$$\varphi_X(t):=E[e^{itX}]=\int_{-\infty}^\infty e^{itx}dF(x), t\in\reals$$
 \end{definition}
-\subsubsection{Basic Properties \cite{cfms}}
+\subsubsection{Basic Properties} 
+\begin{theorem}[Uniqueness Theorem \cite{uChicago}]
+	Let $X$ be a real random variable with distribution function
+	$F$ and characteristic function $\varphi$. Similarly, let $Y$ have distribution
+	function $G$ and characteristic function $\psi$. If $\varphi(t) = \psi(t)$ for all $t\in\reals$
+	then $F(x) = G(x)$ for all $x \in\reals$.
+\end{theorem}
+Properties from here on come from Bisgaard and Zoltan's book \cite{cfms}.
 \begin{theorem}
 If $X$ and $Y$ are independent random variables then the characteristic function of their sum is $$\varphi_{X+Y}(t) = \varphi_{X}\cdot\varphi_{Y}.$$
 \end{theorem}
@@ -122,7 +129,7 @@ Every characteristic function $\varphi$ has the following properties:
 \end{table}
 %also include some figures here
 \section{Examples and Applications of Characteristic Functions}
-To be continued...
+
 \medskip
 
 \bibliographystyle{ieeetr}
