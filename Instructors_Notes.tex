@@ -16,6 +16,7 @@
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 
 \theoremstyle{remark}
@@ -165,6 +166,29 @@ By uniqueness of characteristic functions we know that $Z\sim Poisson(2\lambda)$
 Similarly to last example $$\varphi_{Y}(t)=\varphi_{X_1+X_2}(t)=e^{it\mu_1-\frac{\sigma_1^2 t^2}{2}}\cdot e^{it\mu_2-\frac{\sigma_2^2 t^2}{2}}$$
 Therefore we have $$\varphi_Y(t)=e^{it(\mu_1+\mu_2)-\frac{(\sigma_1^2+\sigma_2^2)t^2}{2}}$$
 which implies that $Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$
+\begin{example}[Central Limit Theorem\cite{waterloo}]
+	If $X_i$ are independent identically distributed random variables with $E[X_i] = \mu, Var[X_i] = \sigma^2$ , then $S_n^* = \frac1{\sigma\sqrt n}\sum_{i=1}^n(X_i-\mu)$ converges weakly to $N(0, 1)$.
+\end{example}
+\noindent\textit{Warning: The proof is not rigorous and serves only for intuitively demonstrating the usage of Characteristic Functions. See the references\cite{waterloo,nus} for detailed proofs.}
+\begin{lemma}
+	For any random variable $X$ with $E[X]=0,Var[X]=1$, we have $\varphi_X(t)=1-\frac12t^2+o(t^2)$.
+	\label{lem:clt}
+\end{lemma}
+\begin{proof}
+	Directly from the definition and Taylor Series we have
+	$$\varphi_X(t)=E[e^{itX}]=E[1+itX+\frac12i^2t^2X^2+o((tX)^2)]$$
+	By linearity of expectation,
+	$$\varphi_X(t)=E[1]+itE[X]-frac12t^2E[X^2]+o(t^2)$$
+	Also
+	$$E[X^2]=Var[X]-(E[X])^2=1$$
+	Therefore $$\varphi_X(t)=1-\frac12t^2+o(t^2)$$
+\end{proof}
+\noindent Now with Lemma \ref{lem:clt} we denote the characteristic function of $\frac{X_i-\mu}{\sigma}$ by $\varphi(t)$, then  $\varphi(t)=1-\frac12t^2+o(t^2)$. Therefore the characteristic function of $S_n^*$ is 
+$$\varphi^n(t/\sqrt{n})=[1-\frac{t^2}{2n}+o(t^2/n)]^n$$
+Take $n\to\infty$ and we get the characteristic function of $\lim\limits_{n\to\infty}S^*_n$
+$$\varPhi(t)=\lim\limits_{n\to\infty}\varphi^n(t/\sqrt{n})
+=\lim\limits_{n\to\infty}[1-\frac{t^2}{2n}]^n=e^{-\frac{t^2}2}$$
+Therefore $\lim\limits_{n\to\infty}S_n^*$ converges to $N(0,1)$.
 \medskip
 
 \bibliographystyle{ieeetr}
