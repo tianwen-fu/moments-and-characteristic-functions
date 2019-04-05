@@ -4,15 +4,22 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{theorem}
+\usepackage{amsthm}
 \usepackage[a4paper, margin=1.5in]{geometry}
 \usepackage{amssymb}
 \usepackage{enumerate}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem*{solution}{Solution}
+
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
 
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
@@ -95,7 +102,9 @@ If $X$ and $Y$ are independent random variables then the characteristic function
 \begin{corollary}
 The product of two characteristic functions is a characteristic function.
 \end{corollary}
-\textbf{Remark} If $X$ and $Y$ are random variables such that $\varphi_{X+Y} = \varphi_X\cdot\varphi_Y $, then in general we do not conclude $X$ and $Y$ are independent. (See page 13 in \cite{cfms})
+\begin{remark}
+	If $X$ and $Y$ are random variables such that $\varphi_{X+Y} = \varphi_X\cdot\varphi_Y $, then in general we do not conclude $X$ and $Y$ are independent. (See page 13 in \cite{cfms})
+\end{remark} 
 \begin{theorem}
 For any $a,b \in \reals$, $$\varphi_{aX+b}(t)=e^{ibt}\varphi_X(at).$$
 \end{theorem}
@@ -107,6 +116,12 @@ Every characteristic function $\varphi$ has the following properties:
 	\item $\varphi(-t)=\overline{f(t)}$
 	\item $\varphi$ is continuous on $\reals$
 \end{enumerate}
+\end{theorem}
+\begin{theorem}[Inversion Formula \cite{pte}]
+	If $\int |\varphi(t)| dt < \infty$ then $X$ has bounded continuous density
+	$$
+	f(x) = \frac1{2\pi} \int e^{-itx}\varphi(t)dt
+	$$
 \end{theorem}
 \subsection{Common Distributions and Their Characteristic Functions}
 \begin{table}[ht]
@@ -131,7 +146,25 @@ Every characteristic function $\varphi$ has the following properties:
 \end{table}
 %also include some figures here
 \section{Examples and Applications of Characteristic Functions}
-
+\begin{example}
+	Rain falls on your head at $\lambda$ drops per second on average. What is the distribution of rain drops on your head in two seconds?
+\end{example}
+\noindent\textbf{Solution.}
+Our intuition tells us that it should be $Poisson(2\lambda)$. \\
+Let $X,Y$ be two independent $Poisson(\lambda)$ random variables. Let $Z=X+Y$.
+Notice that characteristic functions for $X$ (and respectively $Y$) is $\varphi_X(t)=e^{\lambda(e^{it}-1)}$.
+Therefore we have $\varphi_Z(t)=\varphi_{X+Y}(t)=(\varphi_X(t))^2=e^{2\lambda(e^{it}-1)}$. 
+By uniqueness of characteristic functions we know that $Z\sim Poisson(2\lambda)$.
+\begin{remark}
+	By similar ideas, one can show that the sum of two independent poisson random variables has a possion distribution with an expectation of the sum of both expectations.
+\end{remark}
+\begin{example}
+	$X_1\sim N(\mu_1,\sigma_1^2), X_2\sim N(\mu_2,\sigma_2^2).$ $X_1,X_2$ are independent. Distribution of $Y=X_1+X_2$?
+\end{example}
+\noindent\textbf{Solution.}
+Similarly to last example $$\varphi_{Y}(t)=\varphi_{X_1+X_2}(t)=e^{it\mu_1-\frac{\sigma_1^2 t^2}{2}}\cdot e^{it\mu_2-\frac{\sigma_2^2 t^2}{2}}$$
+Therefore we have $$\varphi_Y(t)=e^{it(\mu_1+\mu_2)-\frac{(\sigma_1^2+\sigma_2^2)t^2}{2}}$$
+which implies that $Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$
 \medskip
 
 \bibliographystyle{ieeetr}
