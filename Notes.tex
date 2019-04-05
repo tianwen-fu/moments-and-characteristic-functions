@@ -68,7 +68,8 @@ That leads to the topic we're going to talk about today -- characteristic functi
 If $\int_\reals |\varphi(t)| dt < \infty$ then $X$ has bounded continuous density
 $$
 f(x) = \frac1{2\pi} \int e^{-itx}\varphi(t)dt
-$$
+$$
+
 \end{theorem}
 \begin{theorem}
 	If $X$ and $Y$ are independent random variables then the characteristic function of their sum is\footnote{Properties \ref{thm:indept} and \ref{thm:linear} on come from Bisgaard and Zoltan's book \cite{cfms}.} 
@@ -132,7 +133,7 @@ $$\begin{aligned}[t]
 & =E[1] + itE[X]-\frac12t^2E[X^2] + \cdots
 \end{aligned}$$
 \textbf{Therefore with infinite statistics we may reconstruct the distribution by characteristic functions.}\\
-Also, directly from above, we prove a lemma that will become very useful in the proof of characteristic functions\footnote{The proofs for lemma \ref{lem:clt} and \ref{thm:clt} are not rigorous and serves only for intuitively demonstrating the usage of Characteristic Functions. See the references\cite{waterloo,nus} for detailed proofs.}:
+Also, directly from above, we prove a lemma that will become very useful in the proof of characteristic functions\footnote{The proofs for lemma \ref{lem:clt} and theorem \ref{thm:clt} are not rigorous and serves only for intuitively demonstrating the usage of Characteristic Functions. See the references\cite{waterloo,nus} for detailed proofs.}:
 \begin{lemma}
 	For any random variable $X$ with $E[X]=0,Var[X]=1$, we have $\varphi_X(t)=1-\frac12t^2+o(t^2)$.
 	\label{lem:clt}
