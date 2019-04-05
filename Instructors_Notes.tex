@@ -96,7 +96,7 @@ From this we also have that $|e^{i\theta}| = 1$ for any $\theta$.
 	function $G$ and characteristic function $\psi$. If $\varphi(t) = \psi(t)$ for all $t\in\reals$
 	then $F(x) = G(x)$ for all $x \in\reals$.
 \end{theorem}
-Properties from here on come from Bisgaard and Zoltan's book \cite{cfms}.
+\noindent Properties from here on come from Bisgaard and Zoltan's book \cite{cfms}.
 \begin{theorem}
 If $X$ and $Y$ are independent random variables then the characteristic function of their sum is $$\varphi_{X+Y}(t) = \varphi_{X}\cdot\varphi_{Y}.$$
 \end{theorem}
@@ -114,12 +114,12 @@ Every characteristic function $\varphi$ has the following properties:
 \begin{enumerate}[(i)]
 	\item $\varphi(0)=1,$
 	\item $|\varphi(t)|<=1,$
-	\item $\varphi(-t)=\overline{f(t)}$
+	\item $\varphi(-t)=\overline{\varphi(t)}$
 	\item $\varphi$ is continuous on $\reals$
 \end{enumerate}
 \end{theorem}
 \begin{theorem}[Inversion Formula \cite{pte}]
-	If $\int |\varphi(t)| dt < \infty$ then $X$ has bounded continuous density
+	If $\int_\reals |\varphi(t)| dt < \infty$ then $X$ has bounded continuous density
 	$$
 	f(x) = \frac1{2\pi} \int e^{-itx}\varphi(t)dt
 	$$
