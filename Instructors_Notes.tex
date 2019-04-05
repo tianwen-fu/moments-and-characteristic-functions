@@ -102,10 +102,10 @@ For any $a,b \in \reals$, $$\varphi_{aX+b}(t)=e^{ibt}\varphi_X(at).$$
 \begin{theorem}
 Every characteristic function $\varphi$ has the following properties:
 \begin{enumerate}[(i)]
-	\item $f(0)=1,$
-	\item $|f(t)|<=1,$
-	\item $f(-t)=\overline{f(t)}$
-	\item $f$ is continuous on $\reals$
+	\item $\varphi(0)=1,$
+	\item $|\varphi(t)|<=1,$
+	\item $\varphi(-t)=\overline{f(t)}$
+	\item $\varphi$ is continuous on $\reals$
 \end{enumerate}
 \end{theorem}
 \subsection{Common Distributions and Their Characteristic Functions}
@@ -116,14 +116,16 @@ Every characteristic function $\varphi$ has the following properties:
 		\hline\hline
 		Distribution  & PMF/PDF & Characteristic Function\\
 		\hline
-		Constant $X\equiv a$  & - &  $\phi_X(t) = e^{iat}.$\\
+		Constant $X\equiv a$  & - &  $\varphi_X(t) = e^{iat}.$\\
 		Binomial $X\sim Binomial(m,p)$ & $p_X(n) = \binom{n}{m} p^n(1-p)^{m-n}$ &
-		$\phi_X(t) = (pe^{it} + (1-p))^m$\\
+		$\varphi_X(t) = (pe^{it} + (1-p))^m$\\
 		Poisson $X\sim Poisson(\lambda)$ & $p_X(n) = \frac{\lambda ^n}{n!} e^{-\lambda}$ &
-		$ \phi_X(t)=e^{\lambda(e^{it}-1)} $\\
+		$ \varphi_X(t)=e^{\lambda(e^{it}-1)} $\\
+		Exponential $X \sim Exponential(\lambda)$ & $p_X(n) = \lambda e^{-\lambda x}$ &
+		$\varphi_X(t)=\frac{\lambda}{\lambda-it}$ \\
 		Normal $X\sim N(0,1)$ & $f_X(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$ &
-		$\phi_X(t)=e^{-\frac{t^2}{2}}$\\
-		Normal $Y\sim N(\mu,\sigma ^2)$ & $f_Y(y) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y-\mu)^2}{2\sigma ^2}}$ & $\phi_Y(t)=e^{it\mu-\frac{\sigma^2 t^2}{2}}$
+		$\varphi_X(t)=e^{-\frac{t^2}{2}}$\\
+		Normal $Y\sim N(\mu,\sigma ^2)$ & $f_Y(y) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y-\mu)^2}{2\sigma ^2}}$ & $\varphi_Y(t)=e^{it\mu-\frac{\sigma^2 t^2}{2}}$
 	\end{tabular}
 	\label{tbl:charFunc}
 \end{table}
