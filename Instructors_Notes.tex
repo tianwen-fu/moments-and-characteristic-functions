@@ -190,6 +190,20 @@ Take $n\to\infty$ and we get the characteristic function of $\lim\limits_{n\to\i
 $$\varPhi(t)=\lim\limits_{n\to\infty}\varphi^n(t/\sqrt{n})
 =\lim\limits_{n\to\infty}[1-\frac{t^2}{2n}]^n=e^{-\frac{t^2}2}$$
 Therefore $\lim\limits_{n\to\infty}S_n^*$ converges to $N(0,1)$.
+
+\begin{lemma}[Parseval identity\cite{kurser}]
+F(A) and G(A) are probability measures on a real line;
+$\phi(t)=\int_{-\infty}^{\infty}e^{itx}F(dx)$ and $\psi(t) = \int_{-\infty}^{\infty} e^{itx}G(dx)$ are their characteristic functions. Then the Parseval Identity is as follows:
+$$\int_{-\infty}^{\infty}e^{-ity}\phi(t)G(dt) = \int_{-\infty}^{\infty}\psi(x-y)F(dx).$$
+\end{lemma}
+\begin{proof}
+    By the definition of characteristic functions, we have:
+    $$e^{-ity}\phi(t) = \int_{-\infty}^{\infty} e^{it(x-y)}F(dx)$$
+    Integrating it w.r.t. G(A), we get:
+    $$\int_{-\infty}^{\infty}e^{-ity}\phi(t) G(dt) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} e^{it(x-y)}F(dx)G(dt)$$
+    Using Fubini's Theorem, we get:
+    $$\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} e^{it(x-y)}F(dx)G(dt) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} e^{it(x-y)}G(dt)F(dx) = \int_{-\infty}^{\infty}\psi(x-y)F(dx)$$
+\end{proof}
 \medskip
 
 \bibliographystyle{ieeetr}
