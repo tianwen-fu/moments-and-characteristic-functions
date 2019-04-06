@@ -47,8 +47,8 @@ That leads to the topic we're going to talk about today -- characteristic functi
 \section{Characteristic Functions}
 \subsection{Definition}
 \begin{definition}
-	Let $X$ be a random variable and denote by $F$ the cumulative distribution function of $X$. The characteristic function $\varphi=\varphi_X$ of $X$ (or of $F$, in which case we also write $\varphi_F$) is defined by \cite{cfms}
-	$$\varphi_X(t):=E[e^{itX}]=\int_{-\infty}^\infty e^{itx}dF(x), t\in\reals$$
+	Let $X$ be a random variable and denote by $F$ the cumulative distribution function of $X$ (or $f$ the probability density function). The characteristic function $\varphi=\varphi_X$ of $X$ (or of $F$, in which case we also write $\varphi_F$) is defined by \cite{cfms}
+	$$\varphi_X(t):=E[e^{itX}]=\int_{-\infty}^\infty e^{itx}dF(x)=\int_{-\infty}^\infty e^{itx}f(x)dx, t\in\reals$$
 \end{definition}
 \noindent The $i$ mentioned above is the imaginary unit. If you have no knowledge of complex numbers, all you need to know is simply:
 \begin{enumerate}[$\ast$]
@@ -142,27 +142,20 @@ Not to be confused with mean $\mu$.
 	\caption{Two distributions with the same expectation and variance, but different skewness} 
 	\label{fig:skewness}
 \end{figure}
-Now consider the Taylor Series of characteristic functions:
-$$\begin{aligned}[t]
-\varphi(t) & =E[e^{itX}]  \\
-& =E[1+itX+\frac12i^2t^2X^2+\cdots] \\
-& =E[1] + itE[X]-\frac12t^2E[X^2] + \cdots
-\end{aligned}$$
-\textbf{Therefore with infinite statistics we may reconstruct the distribution by characteristic functions.}\\
-Also, directly from above, we prove a lemma that will become very useful in the proof of characteristic functions\footnote{The proofs for lemma \ref{lem:clt} and theorem \ref{thm:clt} are not rigorous and serves only for intuitively demonstrating the usage of Characteristic Functions. See the references\cite{waterloo,nus} for detailed proofs.}:
-\begin{lemma}
-	For any random variable $X$ with $E[X]=0,Var[X]=1$, we have $\varphi_X(t)=1-\frac12t^2+o(t^2)$.
-	\label{lem:clt}
-\end{lemma}
-\begin{proof}
-	Directly from the definition and Taylor Series we have
-	$$\varphi_X(t)=E[e^{itX}]=E[1+itX+\frac12i^2t^2X^2+o((tX)^2)]$$
-	By linearity of expectation,
-	$$\varphi_X(t)=E[1]+itE[X]-\frac12t^2E[X^2]+o(t^2)$$
-	Also
-	$$E[X^2]=Var[X]-(E[X])^2=1$$
-	Therefore $$\varphi_X(t)=1-\frac12t^2+o(t^2)$$
-\end{proof}
+\noindent Now let's consider the values of derivatives of $\varphi_X(t)$ at 0:
+$$
+\begin{aligned}[t]
+&\varphi_X(t)=\int_{-\infty}^\infty e^{itx}f(x)dx; & \varphi_X(0)=1\\
+&\varphi'_X(t)=i\int_{-\infty}^\infty xe^{itx}f(x)dx; & \varphi'_X(0)=iE[X]\\
+&\varphi''_X(t)=i^2\int_{-\infty}^\infty x^2e^{itx}f(x)dx; & \varphi''_X(0)=i^2E[X^2]\\
+&\cdots
+\end{aligned}
+$$
+\noindent By simple induction one can get the following:
+\begin{theorem}
+	Suppose $X$ is a random variable for which the $n$th moment exists. Suppose $\varphi_X(t)$ is the characteristic function of $X$, and $\varphi_X(t)$ is $n$-times differentiable. Then the $n$th moment $$E[X^n]=i^{-n}\biggl[\frac{d^n}{dt^n}\varphi_X(t)\biggr]_{t=0}$$
+\end{theorem}
+\noindent\textbf{Therefore with infinite statistics we may reconstruct the distribution by characteristic functions.}\\
 \section{Solutions to the Problems}
 With the powerful characteristic functions, the sums of independent random variables are just a piece of cake.\\
 \noindent\textbf{Solution to Problem \ref{prb:poisson}.}
@@ -197,6 +190,20 @@ $$\begin{aligned}
 	This is not a standard way of defining Poisson distribution; however, this gives us a nice intuition of Poisson distribution and can be seen as a proof for the formula of the characteristic function of it.
 \end{remark}
 \section{Central Limit Theorem}
+First we prove a useful lemma\footnote{The proofs for lemma \ref{lem:clt} and theorem \ref{thm:clt} are not rigorous and serves only for intuitively demonstrating the usage of Characteristic Functions. See the references\cite{waterloo,nus} for detailed proofs.}:
+\begin{lemma}
+	For any random variable $X$ with $E[X]=0,Var[X]=1$, we have $\varphi_X(t)=1-\frac12t^2+o(t^2)$.
+	\label{lem:clt}
+\end{lemma}
+\begin{proof}
+	Directly from the definition and Taylor Series we have
+	$$\varphi_X(t)=E[e^{itX}]=E[1+itX+\frac12i^2t^2X^2+o((tX)^2)]$$
+	By linearity of expectation,
+	$$\varphi_X(t)=E[1]+itE[X]-\frac12t^2E[X^2]+o(t^2)$$
+	Also
+	$$E[X^2]=Var[X]-(E[X])^2=1$$
+	Therefore $$\varphi_X(t)=1-\frac12t^2+o(t^2)$$
+\end{proof}
 \begin{theorem}[Central Limit Theorem\cite{waterloo}]
 	If $X_i$ are independent identically distributed random variables with $E[X_i] = \mu, Var[X_i] = \sigma^2$ , then $S_n^* = \frac1{\sigma\sqrt n}\sum_{i=1}^n(X_i-\mu)$ converges weakly to $N(0, 1)$.
 	\label{thm:clt}
