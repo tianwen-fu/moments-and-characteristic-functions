@@ -191,6 +191,21 @@ $$\varPhi(t)=\lim\limits_{n\to\infty}\varphi^n(t/\sqrt{n})
 =\lim\limits_{n\to\infty}[1-\frac{t^2}{2n}]^n=e^{-\frac{t^2}2}$$
 Therefore $\lim\limits_{n\to\infty}S_n^*$ converges to $N(0,1)$.
 
+\begin{example}
+	Show that $Poisson(\lambda)$ is the same as $\lim\limits_{n\to\infty}Binomial(n,\frac{\lambda}{n})$.
+\end{example}
+\noindent\textbf{Solution.}
+Take the limit of the characteristic function of the binomial distribution.
+$$\begin{aligned}
+\lim\limits_{n\to\infty}\varphi_B(t)&
+=\lim\limits_{n\to\infty}(\frac{\lambda}{n}e^{it}+(1-\frac{\lambda}{n}))^n\\
+&=\lim\limits_{n\to\infty}(1+(e^{it}-1)\frac{\lambda}{n})^n\\
+&=e^{\lambda(e^{it}-1)}
+\end{aligned}$$
+\begin{remark}
+	This is not a standard way of defining Poisson distribution; however, this gives us a nice intuition of Poisson distribution and can be seen as a proof for the formula of the characteristic function of it.
+\end{remark}
+
 \begin{lemma}[Parseval identity\cite{kurser}]
 F(A) and G(A) are probability measures on a real line;
 $\phi(t)=\int_{-\infty}^{\infty}e^{itx}F(dx)$ and $\psi(t) = \int_{-\infty}^{\infty} e^{itx}G(dx)$ are their characteristic functions. Then the Parseval Identity is as follows:
