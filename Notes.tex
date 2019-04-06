@@ -12,6 +12,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{problem}{Problem}
+\newtheorem{example}{Example}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
@@ -90,6 +91,21 @@ If $X$ and $Y$ are random variables such that $\varphi_{X+Y} = \varphi_X\cdot\va
 	\label{thm:linear}
 \end{theorem}
 \subsection{Common Distributions and Their Characteristic Functions}
+First we try to derive the characteristic function for $X\sim Exponential(\lambda)$.
+Then
+$$
+\begin{aligned}[t]
+\varphi_X(t) &:=E[e^itX] &\\
+&=\int_{-\infty}^\infty e^{itx}f(x)dx & \\
+&=\int_0^\infty e^{itx}\cdot \lambda e^{-\lambda x}dx & \text{By distribution of x} \\
+&=\frac{\lambda}{it-\lambda}e^{(it-\lambda)x} \bigg|_0^\infty & \\
+&=\frac{\lambda}{\lambda-it} & \text{By Squeeze Theorem}
+\end{aligned}
+$$
+where the last two steps can be justified by
+$$\lim\limits_{x\to\infty}|e^{(it-\lambda)x}| = \lim\limits_{x\to\infty}|e^{-\lambda x}|
+=0 \text{ for positive }\lambda$$
+Characteristic functions of other distributions can be seen in table \ref{tbl:charFunc}.
 \begin{table}[ht]
 	\caption{Characteristic Functions for Common Distributions\cite{kurser}}
 	\centering
@@ -142,7 +158,7 @@ Also, directly from above, we prove a lemma that will become very useful in the 
 	Directly from the definition and Taylor Series we have
 	$$\varphi_X(t)=E[e^{itX}]=E[1+itX+\frac12i^2t^2X^2+o((tX)^2)]$$
 	By linearity of expectation,
-	$$\varphi_X(t)=E[1]+itE[X]-frac12t^2E[X^2]+o(t^2)$$
+	$$\varphi_X(t)=E[1]+itE[X]-\frac12t^2E[X^2]+o(t^2)$$
 	Also
 	$$E[X^2]=Var[X]-(E[X])^2=1$$
 	Therefore $$\varphi_X(t)=1-\frac12t^2+o(t^2)$$
