@@ -12,7 +12,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{problem}{Problem}
-\newtheorem{example}{Example}
+\newtheorem{example}{Example}[section]
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
@@ -180,6 +180,21 @@ Therefore we have $$\varphi_Y(t)=e^{it(\mu_1+\mu_2)-\frac{(\sigma_1^2+\sigma_2^2
 which implies that $Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$
 \begin{remark}
 	This shows that the sum of two independent normal random variables is another normal random variable, the mean and standard deviation of which is the same as calculated statistically from the two components. 
+\end{remark}
+\section{Other Examples}
+\begin{example}
+	Show that $Poisson(\lambda)$ is the same as $\lim\limits_{n\to\infty}Binomial(n,\frac{\lambda}{n})$.
+\end{example}
+\noindent\textbf{Solution.}
+Take the limit of the characteristic function of the binomial distribution.
+$$\begin{aligned}
+\lim\limits_{n\to\infty}\varphi_B(t)&
+=\lim\limits_{n\to\infty}(\frac{\lambda}{n}e^{it}+(1-\frac{\lambda}{n}))^n\\
+&=\lim\limits_{n\to\infty}(1+(e^{it}-1)\frac{\lambda}{n})^n\\
+&=e^{\lambda(e^{it}-1)}
+\end{aligned}$$
+\begin{remark}
+	This is not a standard way of defining Poisson distribution; however, this gives us a nice intuition of Poisson distribution and can be seen as a proof for the formula of the characteristic function of it.
 \end{remark}
 \section{Central Limit Theorem}
 \begin{theorem}[Central Limit Theorem\cite{waterloo}]
