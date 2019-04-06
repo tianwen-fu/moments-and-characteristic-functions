@@ -122,7 +122,8 @@ Every characteristic function $\varphi$ has the following properties:
 	If $\int_\reals |\varphi(t)| dt < \infty$ then $X$ has bounded continuous density
 	$$
 	f(x) = \frac1{2\pi} \int e^{-itx}\varphi(t)dt
-	$$
+	$$
+
 \end{theorem}
 \subsection{Common Distributions and Their Characteristic Functions}
 \begin{table}[ht]
@@ -176,12 +177,12 @@ which implies that $Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$
 \end{lemma}
 \begin{proof}
 	Directly from the definition and Taylor Series we have
-	$$\varphi_X(t)=E[e^{itX}]=E[1+itX+\frac12i^2t^2X^2+o((tX)^2)]$$
+	$$\varphi_X(t)=E[e^{itX}]=E[1+itX+\frac{1}{2}i^2t^2X^2+o((tX)^2)]$$
 	By linearity of expectation,
-	$$\varphi_X(t)=E[1]+itE[X]-frac12t^2E[X^2]+o(t^2)$$
+	$$\varphi_X(t)=E[1]+itE[X]-\frac{1}{2}t^2E[X^2]+o(t^2)$$
 	Also
 	$$E[X^2]=Var[X]-(E[X])^2=1$$
-	Therefore $$\varphi_X(t)=1-\frac12t^2+o(t^2)$$
+	Therefore $$\varphi_X(t)=1-\frac{1}{2}t^2+o(t^2)$$
 \end{proof}
 \noindent Now with Lemma \ref{lem:clt} we denote the characteristic function of $\frac{X_i-\mu}{\sigma}$ by $\varphi(t)$, then  $\varphi(t)=1-\frac12t^2+o(t^2)$. Therefore the characteristic function of $S_n^*$ is 
 $$\varphi^n(t/\sqrt{n})=[1-\frac{t^2}{2n}+o(t^2/n)]^n$$
