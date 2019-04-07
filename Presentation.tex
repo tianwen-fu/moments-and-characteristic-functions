@@ -28,7 +28,7 @@
 	\begin{block}{Raindrops in two seconds}
 		Rain falls on your head at $\lambda$ drops per second on average. What is the distribution of rain drops on your head in two seconds?\pause
 	\end{block}
-	Our intuition tells us that it should be $Poisson(2\lambda)$.\pause
+	Our intuition tells us that it should be $Poisson(2\lambda)$.\pause\\
 	But why?
 \end{frame}
 \begin{frame}{Sum of Independent Normals}
@@ -145,5 +145,92 @@ What about the third moment?\pause\\ A related concept is \textbf{skewness}:
 	\caption{Same expectation and variance, but different skewness} 
 \end{figure}
 \end{frame}
-
+\section{Solutions to Problems}
+\begin{frame}{Raindrops Again}
+\begin{block}{Raindrops in two seconds}
+	Rain falls on your head at $\lambda$ drops per second on average. What is the distribution of rain drops on your head in two seconds?\pause
+\end{block}\pause
+\begin{exampleblock}{Solution}
+	Let $X,Y$ be two independent $Poisson(\lambda)$ random variables. Let $Z=X+Y$.
+	Notice that characteristic functions for $X$ (and respectively $Y$) is $$\varphi_X(t)=e^{\lambda(e^{it}-1)}$$
+	Therefore we have $$\varphi_Z(t)=\varphi_{X+Y}(t)=(\varphi_X(t))^2=e^{2\lambda(e^{it}-1)}$$
+	By uniqueness of characteristic functions we know that $Z\sim Poisson(2\lambda)$.
+\end{exampleblock}
+\end{frame}
+\begin{frame}{Raindrops Again}
+Conclusion:
+\begin{itemize}
+\item This is the same as our intuition.
+\item By similar ideas, one can show that the sum of two independent poisson random variables has a possion distribution with an expectation of the sum of both expectations
+\end{itemize}.
+\end{frame}
+\begin{frame}{Sum of Independent Normals}
+\begin{block}{The Normal Sum Problem}
+$X_1\sim N(\mu_1,\sigma_1^2), X_2\sim N(\mu_2,\sigma_2^2).$ $X_1,X_2$ are independent. Distribution of $Y=X_1+X_2$?\pause
+\end{block}
+\begin{exampleblock}{Solution}
+	Similarly to previous problem $$\varphi_{Y}(t)=\varphi_{X_1+X_2}(t)=e^{it\mu_1-\frac{\sigma_1^2 t^2}{2}}\cdot e^{it\mu_2-\frac{\sigma_2^2 t^2}{2}}$$
+	Therefore we have $$\varphi_Y(t)=e^{it(\mu_1+\mu_2)-\frac{(\sigma_1^2+\sigma_2^2)t^2}{2}}$$
+	which implies that $Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$
+\end{exampleblock}
+\end{frame}
+\begin{frame}{Sum of Independent Normals}
+	Conclusion:
+	\begin{itemize}
+		\item Our result is consistent with the statistics.
+		\item Sum of two independent normal random variables is still normal.
+	\end{itemize}
+\end{frame}
+\begin{frame}{From Binomial To Poisson}
+\begin{block}{Example}
+	Show that $Poisson(\lambda)$ is the same as $\lim\limits_{n\to\infty}Binomial(n,\frac{\lambda}{n})$.
+\end{block}\pause
+\begin{exampleblock}{Solution}
+	Take the limit of the characteristic function of the binomial distribution.
+	$$\begin{aligned}
+	\lim\limits_{n\to\infty}\varphi_B(t)&
+	=\lim\limits_{n\to\infty}(\frac{\lambda}{n}e^{it}+(1-\frac{\lambda}{n}))^n\\
+	&=\lim\limits_{n\to\infty}(1+(e^{it}-1)\frac{\lambda}{n})^n\\
+	&=e^{\lambda(e^{it}-1)}
+	\end{aligned}$$
+\end{exampleblock}
+\end{frame}
+\section{Central Limit Theorem}
+\begin{frame}{Central Limit Theorem}
+	First we need to prove a lemma that gives us the common characteristics of all distributions:
+	\begin{block}{Lemma}
+		For any random variable $X$ with $E[X]=0,Var[X]=1$, we have $\varphi_X(t)=1-\frac12t^2+o(t^2)$.
+		\label{lem:clt}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\begin{proof}
+		Directly from the definition and Taylor Series we have
+		$$\varphi_X(t)=E[e^{itX}]=E[1+itX+\frac12i^2t^2X^2+o((tX)^2)]$$
+		By linearity of expectation,
+		$$\varphi_X(t)=E[1]+itE[X]-\frac12t^2E[X^2]+o(t^2)$$
+		Also
+		$$E[X^2]=Var[X]-(E[X])^2=1$$
+		Therefore $$\varphi_X(t)=1-\frac12t^2+o(t^2)$$
+	\end{proof}
+\end{frame}
+\begin{frame}{Central Limit Theorem}
+\begin{theorem}[Central Limit Theorem]
+	If $X_i$ are independent identically distributed random variables with $E[X_i] = \mu, Var[X_i] = \sigma^2$ , then $S_n^* = \frac1{\sigma\sqrt n}\sum_{i=1}^n(X_i-\mu)$ converges weakly to $N(0, 1)$.
+	\label{thm:clt}
+\end{theorem}
+\end{frame}
+\begin{frame}
+\begin{proof}
+	By Lemma \ref{lem:clt} we denote the characteristic function of $\frac{X_i-\mu}{\sigma}$ by $\varphi(t)$, then  $\varphi(t)=1-\frac12t^2+o(t^2)$. Therefore the characteristic function of $S_n^*$ is 
+	$$\varphi^n(t/\sqrt{n})=[1-\frac{t^2}{2n}+o(t^2/n)]^n$$
+	Take $n\to\infty$ and we get the characteristic function of $\lim\limits_{n\to\infty}S^*_n$
+	$$\varPhi(t)=\lim\limits_{n\to\infty}\varphi^n(t/\sqrt{n})
+	=\lim\limits_{n\to\infty}[1-\frac{t^2}{2n}]^n=e^{-\frac{t^2}2}$$
+	Therefore $\lim\limits_{n\to\infty}S_n^*$ converges to $N(0,1)$.
+\end{proof}
+\end{frame}
+\begin{frame}{Q\&A}
+	Thanks for your attention!
+\end{frame}
 \end{document}
