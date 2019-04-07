@@ -31,7 +31,7 @@
 
 \begin{document}
 \maketitle
-\section{Sum of Two Independent Random Variable}
+\section{Sum of Two Independent Random Variables}
 Let's consider the following problems:
 \begin{problem}
 	Rain falls on your head at $\lambda$ drops per second on average. What is the distribution of rain drops on your head in two seconds?
@@ -65,12 +65,12 @@ That leads to the topic we're going to talk about today -- characteristic functi
 \begin{remark}
 	From this we may easily conclude the distribution of a random variable if we can prove that its characteristic function is of the same form as a known distribution.
 \end{remark}
+Even if we cannot find the distribution in the lookup table, we may also retrieve it from characteristic functions by hand:
 \begin{theorem}[Inversion Formula \cite{pte}]
 If $\int_\reals |\varphi(t)| dt < \infty$ then $X$ has bounded continuous density
 $$
 f(x) = \frac1{2\pi} \int e^{-itx}\varphi(t)dt
 $$
-
 \end{theorem}
 \begin{theorem}
 	If $X$ and $Y$ are independent random variables then the characteristic function of their sum is\footnote{Properties \ref{thm:indept} and \ref{thm:linear} on come from Bisgaard and Zoltan's book \cite{cfms}.} 
@@ -81,7 +81,7 @@ $$
 This gives us a much simpler way than convolution.
 \end{remark} 
 \begin{remark}
-If $X$ and $Y$ are random variables such that $\varphi_{X+Y} = \varphi_X\cdot\varphi_Y $, then in general we do not conclude $X$ and $Y$ are independent. (See page 13 in \cite{cfms})
+If $X$ and $Y$ are random variables such that $\varphi_{X+Y} = \varphi_X\cdot\varphi_Y $, then in general we do not conclude $X$ and $Y$ are independent. (See page 13 in \cite{cfms}) This is called \textbf{subindependence}\cite{wiki:subindependence}.
 \end{remark} 
 \begin{corollary}
 	The product of two characteristic functions is a characteristic function.
